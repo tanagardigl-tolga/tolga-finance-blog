@@ -18,6 +18,7 @@ export function ServerHeader({ settings }: ServerHeaderProps) {
     { name: "Blog", href: "/blog" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
+    { name: "Login", href: "/auth/login" },
   ];
 
   return (
@@ -44,23 +45,20 @@ export function ServerHeader({ settings }: ServerHeaderProps) {
             </Link>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-1">
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-6">
+            <nav className="hidden md:flex items-center space-x-8">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {item.name}
                 </Link>
               ))}
-              <Button asChild size="sm">
-                <Link href="/auth/login">Login</Link>
-              </Button>
             </nav>
-            <MobileNavigation navigation={[...navigation, { name: "Login", href: "/auth/login" }]} />
+            <MobileNavigation navigation={navigation} />
           </div>
 
         </div>
