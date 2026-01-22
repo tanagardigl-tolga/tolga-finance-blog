@@ -44,20 +44,23 @@ export function ServerHeader({ settings }: ServerHeaderProps) {
             </Link>
           </div>
 
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-4">
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
+            <nav className="hidden md:flex items-center space-x-6">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {item.name}
                 </Link>
               ))}
+              <Button asChild size="sm">
+                <Link href="/auth/login">Login</Link>
+              </Button>
             </nav>
-            <MobileNavigation navigation={navigation} />
+            <MobileNavigation navigation={[...navigation, { name: "Login", href: "/auth/login" }]} />
           </div>
 
         </div>
@@ -75,7 +78,7 @@ export function ServerHeroSection({ settings }: ServerHeroSectionProps) {
     <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] dark:bg-grid-slate-700/25 dark:[mask-image:linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.5))]" />
-      
+
       <div className="relative container mx-auto px-6 py-24 lg:py-32">
         <div className="max-w-5xl mx-auto text-center">
           {/* Main Heading */}
@@ -91,7 +94,7 @@ export function ServerHeroSection({ settings }: ServerHeroSectionProps) {
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-4 max-w-3xl mx-auto leading-relaxed">
             {settings.hero_subtitle_primary}
           </p>
-          
+
           <p className="text-lg md:text-xl text-gray-500 dark:text-gray-400 mb-12 max-w-2xl mx-auto">
             {settings.hero_subtitle_secondary}
           </p>
@@ -119,7 +122,7 @@ export function ServerHeroSection({ settings }: ServerHeroSectionProps) {
               <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{settings.hero_stats_articles_count}</div>
               <div className="text-sm text-gray-600 dark:text-gray-400">{settings.hero_stats_articles_label}</div>
             </div>
-            
+
             <div className="flex flex-col items-center p-6 rounded-2xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50">
               <div className="p-3 rounded-full bg-green-100 dark:bg-green-900/30 mb-3">
                 <Users className="h-6 w-6 text-green-600 dark:text-green-400" />
@@ -127,7 +130,7 @@ export function ServerHeroSection({ settings }: ServerHeroSectionProps) {
               <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{settings.hero_stats_subscribers_count}</div>
               <div className="text-sm text-gray-600 dark:text-gray-400">{settings.hero_stats_subscribers_label}</div>
             </div>
-            
+
             <div className="flex flex-col items-center p-6 rounded-2xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50">
               <div className="p-3 rounded-full bg-purple-100 dark:bg-purple-900/30 mb-3">
                 <TrendingUp className="h-6 w-6 text-purple-600 dark:text-purple-400" />
@@ -249,7 +252,7 @@ interface ServerFooterProps {
 
 export function ServerFooter({ settings }: ServerFooterProps) {
   const currentYear = new Date().getFullYear();
-  
+
   return (
     <footer className="bg-gray-900 dark:bg-black text-white py-12">
       <div className="container mx-auto px-4">
@@ -299,7 +302,7 @@ export function ServerFooter({ settings }: ServerFooterProps) {
                 )}
               </div>
             </div>
-            
+
             {/* Quick Links */}
             <div>
               <h3 className="font-semibold mb-4">Quick Links</h3>
@@ -310,10 +313,10 @@ export function ServerFooter({ settings }: ServerFooterProps) {
                 <li><Link href="/contact" className="text-gray-300 hover:text-white transition-colors">Contact</Link></li>
               </ul>
             </div>
-            
+
             {/* Categories removed from footer */}
           </div>
-          
+
           {/* Bottom Bar */}
           <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-300 mb-4 md:mb-0">
